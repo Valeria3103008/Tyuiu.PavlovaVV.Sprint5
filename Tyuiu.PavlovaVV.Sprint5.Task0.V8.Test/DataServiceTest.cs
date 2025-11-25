@@ -6,9 +6,9 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task0.V8.Test
     public sealed class DataServiceTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ValidSaveToFileTextData()
         {
-            string path = @"C:\Users\leroc\source\repos\Tyuiu.PavlovaVV.Sprint5\Tyuiu.PavlovaVV.Sprint5.Task0.V8\bin\Debug\net8.0";
+            string path = @"C:\Users\leroc\source\repos\Tyuiu.PavlovaVV.Sprint5\Tyuiu.PavlovaVV.Sprint5.Task0.V8\bin\Debug\OutPutFileTask0.txt";
             FileInfo fileinfo = new FileInfo(path);
             bool fileExists = fileinfo.Exists;
             Assert.IsTrue(fileExists);

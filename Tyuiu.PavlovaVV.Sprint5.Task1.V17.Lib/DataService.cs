@@ -7,52 +7,33 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task1.V17.Lib
     {
         public string SaveToFileTextData(int startValue, int stopValue)
         {
-            try
+            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
+            FileInfo fileInfo = new FileInfo(path);
+            bool fileExists = fileInfo.Exists;
+            if (fileExists)
             {
-                List<string> results = new List<string>();
+                File.Delete(path);
+            }
+            double y;
+            string strY;
+            for (int x = startValue; x <= stopValue; x++)
+            {
+                y = Math.Round(2 * x - 4 + (2 * x - 1) / (Math.Sin(x) + 1), 2);
+                strY = Convert.ToString(y);
 
-                for (int x = startValue; x <= stopValue; x++)
+                if (x != stopValue)
                 {
-                    double result = CalculateFunction(x);
-                    string formattedResult = FormatResult(result);
-                    results.Add(formattedResult);
+                    File.AppendAllText(path, strY + "\n");
+
+                }
+                else
+                {
+                    File.AppendAllText(path, strY);
+
                 }
 
-                return string.Join("\n", results);
             }
-            catch (Exception ex)
-            {
-                return $"Erreur: {ex.Message}";
-            }
-        }
-
-        private string FormatResult(double value)
-        {
-            if (Math.Abs(value - Math.Round(value)) < 0.001)
-            {
-                return ((int)Math.Round(value)).ToString(CultureInfo.GetCultureInfo("fr-FR"));
-            }
-            else
-            {
-                return value.ToString("F2", CultureInfo.GetCultureInfo("fr-FR"));
-            }
-        }
-
-        public double CalculateFunction(int x)
-        {
-            try
-            {
-                double denominator = Math.Sin(x) + 1;
-
-                if (Math.Abs(denominator) < 1e-10)
-                    return 0;
-
-                return (2 * x - 4) + (2 * x - 1) / denominator;
-            }
-            catch
-            {
-                return 0;
-            }
+            return path;
         }
     }
 }

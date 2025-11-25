@@ -7,32 +7,26 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task1.V17
         {
             DataService ds = new DataService();
 
-            Console.WriteLine("Tabulation de la fonction F(x) = 2x - 4 + (2x-1)/(sin(x)+1)");
-            Console.WriteLine("Intervalle: [-5; 5] avec pas de 1");
-            Console.WriteLine("==============================================");
+            int startValue = -5;
+            int stopValue = 5;
 
-            // Calcul et sauvegarde
-            string result = ds.SaveToFileTextData(-5, 5);
-            Console.WriteLine(result);
-            Console.WriteLine();
+            Console.WriteLine("***************************************************************************");
+            Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
+            Console.WriteLine("***************************************************************************\n");
 
-            // Affichage du tableau
-            DisplayTable(ds, -5, 5);
+            Console.WriteLine($"start = {startValue}");
+            Console.WriteLine($"stop = {stopValue}");
 
-            Console.WriteLine("\nAppuyez sur une touche pour quitter...");
+            Console.WriteLine("***************************************************************************");
+            Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
+            Console.WriteLine("***************************************************************************");
+
+            string res = ds.SaveToFileTextData(startValue, stopValue);
+
+
+            Console.WriteLine("Файл " + res);
+            Console.WriteLine("Создан!");
             Console.ReadKey();
         }
-
-        static void DisplayTable(DataService ds, int start, int stop)
-        {
-            Console.WriteLine("Tableau des résultats:");
-            Console.WriteLine("x\t\tF(x)");
-            Console.WriteLine("----------------------");
-
-            var data = ds.GetTabulatedData(start, stop);
-            foreach (string line in data)
-            {
-                Console.WriteLine(line);
-            }
     }
 }

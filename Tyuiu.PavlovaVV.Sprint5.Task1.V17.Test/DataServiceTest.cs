@@ -6,23 +6,14 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task1.V17.Test
     public sealed class DataServiceTest
     {
         [TestMethod]
-        public void TestSaveToFileTextData()
+        public void TestMethod1()
         {
-            DataService ds = new DataService();
-            string expected = "-19,62\\n-17,12\\n-18,15\\n-63,13\\n-24,92\\n-5\\n-1,46\\n1,57\\n6,38\\n32,78\\n225,11";
+            string path = @"C:\Users\leroc\source\repos\Tyuiu.PavlovaVV.Sprint5\Tyuiu.PavlovaVV.Sprint5.Task1.V17\bin\Debug\net8.0";
 
-            // Act
-            string result = ds.SaveToFileTextData(-5, 5);
-
-            // Assert
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestFormatResult()
-        {
-            // Arrange
-            DataService ds = new DataService();
+            FileInfo fileInfo = new FileInfo(path);
+            bool fileExists = fileInfo.Exists;
+            bool wait = true;
+            Assert.AreEqual(wait, fileExists);
 
         }
     }

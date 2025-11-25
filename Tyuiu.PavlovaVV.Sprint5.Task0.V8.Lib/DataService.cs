@@ -6,10 +6,10 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task0.V8.Lib
     {
         public string SaveToFileTextData(int x)
         {
-            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask0.txt");
-            double y = ((Math.Pow(x, 3) - 1) / (4 * Math.Pow(x, 2)));
+            string path = Path.Combine(Path.GetTempPath(),"OutPutFileTask0.txt");
+            double y = (Math.Pow(x, 3) - 1) / (4 * Math.Pow(x, 2));
             y = Math.Round(y, 3);
-            File.WriteAllText(path, y.ToString());
+            File.WriteAllText(path, Convert.ToString(y));
             return path;
         }
     }
