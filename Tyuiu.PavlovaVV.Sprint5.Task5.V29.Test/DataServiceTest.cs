@@ -1,0 +1,18 @@
+﻿using System.IO;
+using Tyuiu.PavlovaVV.Sprint5.Task5.V29.Lib;
+namespace Tyuiu.PavlovaVV.Sprint5.Task5.V29.Test
+{
+    [TestClass]
+    public sealed class DataServiceTest
+    {
+        [TestMethod]
+        public void CheckedExistsFile()
+        {
+            string path = @"C:\Users\leroc\source\repos\Tyuiu.PavlovaVV.Sprint5\DataSprint5";
+
+            FileInfo fileInfo = new FileInfo(path);
+            bool fileExist = fileInfo.Exists;
+            Assert.AreEqual(true, fileExist);
+        }
+    }
+}
