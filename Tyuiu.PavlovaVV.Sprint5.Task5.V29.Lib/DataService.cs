@@ -6,19 +6,22 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task5.V29.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            double res = 0;
             using (StreamReader reader = new StreamReader(path))
             {
                 string line;
+                double Min = int.MaxValue;
+                double MinRes = int.MaxValue;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (res > Convert.ToDouble(line))
+                    double temp = Convert.ToDouble(line);
+                    if ((temp <= Min) && (temp >= 10 && temp < 100))
                     {
-                        res = Convert.ToDouble(line);
+                        Min = Convert.ToInt32(line);
+                        MinRes = Convert.ToDouble(line);
                     }
                 }
+                return MinRes;
             }
-            return Math.Round(res, 3);
         }
     }
 }

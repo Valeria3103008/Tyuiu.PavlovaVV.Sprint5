@@ -11,8 +11,9 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task5.V29.Test
             string path = @"C:\Users\leroc\source\repos\Tyuiu.PavlovaVV.Sprint5\DataSprint5";
 
             FileInfo fileInfo = new FileInfo(path);
-            bool fileExist = fileInfo.Exists;
-            Assert.AreEqual(true, fileExist);
+            bool fileExists = fileInfo.Exists;
+            bool wait = true;
+            Assert.AreEqual(fileExists, wait);
         }
     }
 }
