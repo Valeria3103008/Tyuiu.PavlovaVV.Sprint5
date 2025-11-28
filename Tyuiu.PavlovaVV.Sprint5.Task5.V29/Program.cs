@@ -10,7 +10,7 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task5.V29
 
 
             DataService ds = new DataService();
-            string path = @"C:\Users\leroc\source\repos\Tyuiu.PavlovaVV.Sprint5\DataSprint5\InPutDataFileTask5V29.txt";
+            string path = @"C:\DataSprint5\InPutDataFileTask5V29.txt";
             Console.WriteLine("Данные находятся в файле: " + path);
 
             Console.WriteLine("***************************************************************************");
