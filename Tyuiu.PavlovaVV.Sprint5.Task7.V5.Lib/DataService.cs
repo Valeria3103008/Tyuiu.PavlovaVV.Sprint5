@@ -6,47 +6,32 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task7.V5.Lib
     {
         public string LoadDataAndSave(string path)
         {
-            string pathSaveFile = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask7.txt";
-
-            FileInfo fileInfo = new FileInfo(pathSaveFile);
+            string pS = Path.Combine(Path.GetTempPath(), "OutPutFileTask7V5.txt");
+            FileInfo fileInfo = new FileInfo(pS);
             bool fileExists = fileInfo.Exists;
-
             if (fileExists)
             {
-                File.Delete(pathSaveFile);
+                File.Delete(pS);
             }
-
-            char[] alph = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
             string strLine = "";
-
-            using (StreamReader reader = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(path))
             {
                 string line;
-                while ((line = reader.ReadLine()) != null)
+                while ((line = sr.ReadLine()) != null)
                 {
                     for (int i = 0; i < line.Length; i++)
                     {
-                        char c = line[i];
-                        if (char.IsUpper(c) && Array.IndexOf(alph, c) >= 0)
+                        if ((line[i] != 'H') && (line[i] != 'e') && (line[i] != 'l') && (line[i] != 'o') && (line[i] != 'I') && (line[i] != 's') && (line[i] != 'M') && (line[i] != 'y') && (line[i] != 'F') && (line[i] != 'i') && (line[i] != 'r') && (line[i] != 't') && (line[i] != 's') && (line[i] != 'P') && (line[i] != 'g') && (line[i] != 'a') && (line[i] != 'm'))
                         {
-
-                        }
-                        else if (char.IsLower(c) && Array.IndexOf(alph, char.ToUpper(c)) >= 0)
-                        {
-                            // Пропускаем маленькие латинские буквы, преобразуя их к верхнему регистру
-                        }
-                        else
-                        {
-                            strLine += line[i];
+                            strLine = strLine + line[i];
                         }
                     }
-
-                    File.AppendAllText(pathSaveFile, strLine + Environment.NewLine);
-                    strLine = "";
                 }
+                strLine = strLine.Replace("    .", ".");
+                File.AppendAllText(pS, strLine + Environment.NewLine);
+                strLine = "";
             }
-
-            return pathSaveFile;
+            return pS;
         }
     }
 }
