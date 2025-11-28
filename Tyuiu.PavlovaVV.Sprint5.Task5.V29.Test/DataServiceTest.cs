@@ -6,7 +6,7 @@ namespace Tyuiu.PavlovaVV.Sprint5.Task5.V29.Test
     public sealed class DataServiceTest
     {
         [TestMethod]
-        public void CheckedExistsFile()
+        public void TestMethod1()
         {
             string path = @"C:\DataSprint5\InPutDataFileTask5V29.txt";
 
